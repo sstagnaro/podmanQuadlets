@@ -1,0 +1,22 @@
+[Container]
+Environment=USER_UID=1000 USER_GID=1000
+#Environment=GITEA__database__DB_TYPE=sqlite3
+#Environment=GITEA__database__PATH=/data/gitea/gitea.db
+#Environment=GITEA__log__ROOT_PATH=/data/gitea/log
+Environment="GITEA____APP_NAME=Tenaris Git"
+#Environment=GITEA____RUN_USER=git
+#Environment=GITEA__repository__ROOT=/data/git/repositories
+Environment=GITEA__security__INSTALL_LOCK=true
+#Environment=GITEA__server__DOMAIN=0.0.0.0
+#Environment=GITEA__server__HTTP_ADDR=0.0.0.0
+#Environment=GITEA__server__HTTP_PORT=3000
+Image=docker.io/gitea/gitea:1.22.6
+Network=gitea.network
+PublishPort=3000:3000
+PublishPort=222:22
+Volume=gitea.volume:/var/lib/gitea
+Volume=/etc/timezone:/etc/timezone:ro
+Volume=/etc/localtime:/etc/localtime:ro
+
+[Service]
+Restart=always
