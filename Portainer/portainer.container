@@ -1,0 +1,12 @@
+# portainer.container
+[Container]
+ContainerName=portainer
+Image=portainer/portainer-ce:lts
+PodmanArgs=--privileged
+PublishPort=8000:8000
+PublishPort=9443:9443
+Volume=/run/podman/podman.sock:/var/run/docker.sock
+Volume=portainer_data:/data
+
+[Service]
+Restart=always
